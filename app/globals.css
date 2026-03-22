@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --preo-green: #1F8A4C;
+  --preo-green-dark: #166138;
+  --preo-green-light: #EBF5F0;
+}
+
+@layer base {
+  body {
+    @apply font-inter text-[#374151] bg-white;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit font-bold text-[#111827];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .section-green {
+    background-color: #EBF5F0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
