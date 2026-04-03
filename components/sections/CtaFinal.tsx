@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
@@ -8,19 +9,11 @@ const PHONE = "0508063437"
 
 export default function CtaFinal() {
   return (
-    <section
-      className="relative py-24 overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #003d1a 0%, #005a28 50%, #00a650 100%)",
-      }}
-    >
-      {/* Decorative glow overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, rgba(0,230,118,0.08) 0%, transparent 70%)",
-        }}
-      />
+    <section className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image src="/images/cta-handshake.jpg" alt="Partenariat professionnel" fill className="object-cover" quality={80} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,61,26,0.92) 0%, rgba(0,90,40,0.88) 50%, rgba(0,166,80,0.85) 100%)" }} />
+      </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div

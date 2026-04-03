@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Globe, MessageSquare, TrendingUp, Heart, Handshake, Shield } from "lucide-react"
 
@@ -44,7 +45,11 @@ const differentiators = [
 
 export default function DifferentiatorsSection() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: "#0a110b" }}>
+    <section className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image src="/images/skyline-africa.jpg" alt="Skyline africaine" fill className="object-cover" quality={80} />
+        <div className="absolute inset-0" style={{ background: "rgba(6,10,7,0.88)" }} />
+      </div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

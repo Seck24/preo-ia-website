@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Check, Star, ArrowRight } from "lucide-react"
@@ -37,11 +38,15 @@ export default function FormationPreview() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="relative rounded-3xl overflow-hidden mb-16 h-64 sm:h-80 flex flex-col items-center justify-center text-center px-4"
-          style={{
-            background: "linear-gradient(135deg, #003d1a 0%, #005a28 50%, #0a1a0b 100%)",
-            border: "1px solid rgba(0,230,118,0.15)",
-          }}
         >
+          <Image
+            src="/images/formation-banner.jpg"
+            alt="Formation IA en ligne"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,61,26,0.88) 0%, rgba(0,90,40,0.75) 100%)" }} />
           {/* Decorative glow */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"

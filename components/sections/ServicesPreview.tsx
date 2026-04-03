@@ -1,45 +1,41 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight, Search, Zap, GraduationCap, Database, Wrench } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 const services = [
   {
-    icon: Search,
-    emoji: "🔍",
+    image: "/images/audit-ia.jpg",
     title: "Audit IA",
     description:
       "Analyse complète de votre entreprise, identification des meilleures opportunités IA et roadmap priorisée sur 6 mois.",
     href: "/services#audit",
   },
   {
-    icon: Zap,
-    emoji: "⚡",
+    image: "/images/integration-ia.jpg",
     title: "Intégration IA sur mesure",
     description:
       "Automatisation de vos workflows, chatbot WhatsApp, applications métier adaptées aux réalités africaines.",
     href: "/services#integration",
   },
   {
-    icon: GraduationCap,
-    emoji: "🎓",
+    image: "/images/formation.jpg",
     title: "Formation dirigeants",
     description:
       "Formation 100% en ligne pour comprendre, décider et piloter un projet IA sans être expert technique.",
     href: "/formation",
   },
   {
-    icon: Database,
-    emoji: "🗄️",
+    image: "/images/data-prep.jpg",
     title: "Préparation des données",
     description:
       "Structuration et mise en forme de vos données d'entreprise pour les rendre exploitables par l'IA.",
     href: "/services#donnees",
   },
   {
-    icon: Wrench,
-    emoji: "🔧",
+    image: "/images/maintenance.jpg",
     title: "Maintenance & Support",
     description:
       "Contrats mensuels de suivi, monitoring et support pour toutes les solutions IA déployées.",
@@ -95,17 +91,22 @@ export default function ServicesPreview() {
                 e.currentTarget.style.border = "1px solid rgba(0,230,118,0.10)"
               }}
             >
-              {/* Icon area — green gradient top strip */}
-              <div
-                className="h-2 w-full"
-                style={{ background: "linear-gradient(90deg, #003d1a, #00e676)" }}
-              />
+              {/* Image */}
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(13,26,15,0.95) 100%)" }} />
+              </div>
 
               {/* Content */}
               <div className="p-6">
-                {/* Icon circle */}
+                {/* Icon circle - hidden, replaced by image */}
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  className="hidden w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                   style={{ background: "rgba(0,230,118,0.08)" }}
                 >
                   <span className="text-xl">{service.emoji}</span>

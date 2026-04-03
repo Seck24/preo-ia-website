@@ -1,36 +1,32 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function HeroSection() {
   return (
-    <section
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #060a07 0%, #0a1a0b 50%, #060a07 100%)" }}
-    >
-      {/* Green glowing sphere */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Professionnel africain dans un bureau moderne"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={90}
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(6,10,7,0.92) 0%, rgba(10,26,11,0.80) 50%, rgba(6,10,7,0.75) 100%)" }} />
+      </div>
+      {/* Green glow overlay */}
       <div
-        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+        className="absolute right-0 top-1/2 pointer-events-none"
         style={{
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0,230,118,0.25) 0%, rgba(0,61,26,0.3) 40%, transparent 70%)",
-          filter: "blur(20px)",
-          transform: "translate(20%, -50%)",
-        }}
-      />
-      {/* Secondary glow */}
-      <div
-        className="absolute left-1/4 top-1/4 pointer-events-none"
-        style={{
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0,230,118,0.06) 0%, transparent 70%)",
-          filter: "blur(40px)",
+          width: "600px", height: "600px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(0,230,118,0.18) 0%, transparent 70%)",
+          filter: "blur(40px)", transform: "translate(20%, -50%)",
         }}
       />
 

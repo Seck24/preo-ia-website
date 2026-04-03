@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
@@ -39,10 +40,14 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.02em' }}>
-              <span style={{ color: '#00e676' }}>Préo</span>
-              <span style={{ color: '#ffffff' }}> IA</span>
-            </span>
+            <Image
+              src="/logo_transparent.png"
+              alt="Préo IA"
+              width={120}
+              height={50}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
