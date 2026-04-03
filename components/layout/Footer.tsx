@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { Mail, Phone, MapPin } from "lucide-react"
 
 const services = [
@@ -28,13 +27,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Image
-              src="/logo.png"
-              alt="Préo IA"
-              width={130}
-              height={50}
-              className="h-10 w-auto brightness-0 invert mb-4"
-            />
+            <div className="mb-4">
+              <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: '1.5rem', letterSpacing: '-0.02em' }}>
+                <span style={{ color: '#00e676' }}>Préo</span>
+                <span style={{ color: '#ffffff' }}> IA</span>
+              </span>
+            </div>
             <p className="text-sm leading-relaxed mb-4" style={{ color: "#4a5e4c" }}>
               Agence d&apos;intégration IA basée à Abidjan. Nous aidons les PME africaines à
               tirer parti de l&apos;intelligence artificielle.
