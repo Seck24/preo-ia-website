@@ -104,13 +104,6 @@ export default function ServicesPreview() {
 
               {/* Content */}
               <div className="p-6">
-                {/* Icon circle - hidden, replaced by image */}
-                <div
-                  className="hidden w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                  style={{ background: "rgba(0,230,118,0.08)" }}
-                >
-                  <span className="text-xl">{service.emoji}</span>
-                </div>
                 <h3 className="font-jakarta font-bold text-lg text-white mb-2 transition-colors group-hover:opacity-90">
                   {service.title}
                 </h3>
