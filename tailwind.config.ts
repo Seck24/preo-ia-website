@@ -10,9 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         preo: {
-          green: "#1F8A4C",
-          "green-dark": "#166138",
-          "green-light": "#EBF5F0",
+          bg: '#060a07',
+          s1: '#0a110b',
+          s2: '#0f1a10',
+          s3: '#141f15',
+          green: '#00e676',
+          'green-dim': '#00a650',
+          'green-dark': '#003d1a',
         },
         gray: {
           title: "#111827",
@@ -22,8 +26,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        outfit: ["var(--font-outfit)", "sans-serif"],
+        jakarta: ["var(--font-jakarta)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
+        outfit: ["var(--font-jakarta)", "sans-serif"],
       },
       borderRadius: {
         xl: "16px",

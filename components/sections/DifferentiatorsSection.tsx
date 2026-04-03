@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { Globe, MessageSquare, TrendingUp, Heart, Handshake, Shield } from "lucide-react"
 
@@ -45,19 +44,7 @@ const differentiators = [
 
 export default function DifferentiatorsSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Background image with parallax effect */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/skyline-africa.jpg"
-          alt="Skyline ville africaine moderne"
-          fill
-          className="object-cover"
-          quality={80}
-        />
-        <div className="absolute inset-0 bg-[#111827]/85 backdrop-blur-[2px]" />
-      </div>
-
+    <section className="relative py-24 overflow-hidden" style={{ background: "#0a110b" }}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,13 +53,16 @@ export default function DifferentiatorsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-[#4ADE80] font-semibold text-sm uppercase tracking-wider">
+          <span
+            className="font-semibold text-sm uppercase tracking-wider"
+            style={{ color: "#00e676" }}
+          >
             Notre différence
           </span>
-          <h2 className="font-outfit text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+          <h2 className="font-jakarta text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
             Pourquoi choisir Préo IA ?
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto" style={{ color: "#8a9e8c" }}>
             6 engagements concrets qui font toute la différence dans votre parcours vers l&apos;IA.
           </p>
         </motion.div>
@@ -87,13 +77,30 @@ export default function DifferentiatorsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/15 hover:border-white/20 transition-all duration-300 group"
+                className="rounded-2xl p-6 transition-all duration-300 group cursor-default"
+                style={{
+                  background: "rgba(0,230,118,0.04)",
+                  border: "1px solid rgba(0,230,118,0.10)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(0,230,118,0.08)"
+                  e.currentTarget.style.border = "1px solid rgba(0,230,118,0.18)"
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(0,230,118,0.04)"
+                  e.currentTarget.style.border = "1px solid rgba(0,230,118,0.10)"
+                }}
               >
-                <div className="w-12 h-12 bg-[#1F8A4C]/30 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1F8A4C] transition-colors">
-                  <Icon size={22} className="text-[#4ADE80] group-hover:text-white transition-colors" />
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: "rgba(0,230,118,0.10)" }}
+                >
+                  <Icon size={22} style={{ color: "#00e676" }} />
                 </div>
-                <h3 className="font-outfit font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="font-jakarta font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#8a9e8c" }}>
+                  {item.description}
+                </p>
               </motion.div>
             )
           })}

@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Check, Star, ArrowRight } from "lucide-react"
@@ -29,32 +28,41 @@ const niveaux = [
 
 export default function FormationPreview() {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 overflow-hidden" style={{ background: "#0a110b" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Banner image + header */}
+        {/* Dark gradient header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative rounded-3xl overflow-hidden mb-16 h-64 sm:h-80"
+          className="relative rounded-3xl overflow-hidden mb-16 h-64 sm:h-80 flex flex-col items-center justify-center text-center px-4"
+          style={{
+            background: "linear-gradient(135deg, #003d1a 0%, #005a28 50%, #0a1a0b 100%)",
+            border: "1px solid rgba(0,230,118,0.15)",
+          }}
         >
-          <Image
-            src="/images/formation-banner.jpg"
-            alt="Formation en ligne - professionnels africains apprenant ensemble"
-            fill
-            className="object-cover"
-            quality={85}
+          {/* Decorative glow */}
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
+            style={{
+              width: "400px",
+              height: "200px",
+              background: "radial-gradient(ellipse, rgba(0,230,118,0.15) 0%, transparent 70%)",
+              filter: "blur(30px)",
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1F8A4C]/90 to-[#1F8A4C]/50" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <span className="text-white/80 font-semibold text-sm uppercase tracking-wider mb-2">
+          <div className="relative">
+            <span
+              className="font-semibold text-sm uppercase tracking-wider mb-2 block"
+              style={{ color: "rgba(0,230,118,0.8)" }}
+            >
               Formation en ligne
             </span>
-            <h2 className="font-outfit text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="font-jakarta text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
               Comprendre l&apos;IA en Entreprise
             </h2>
-            <p className="text-white/85 max-w-2xl mx-auto text-lg">
+            <p className="max-w-2xl mx-auto text-lg" style={{ color: "rgba(255,255,255,0.75)" }}>
               3 niveaux de formation pour passer de débutant à stratège IA. 100% en ligne,
               100% en français, 100% adapté aux réalités africaines.
             </p>
@@ -70,11 +78,21 @@ export default function FormationPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`relative rounded-2xl p-8 border-2 transition-all duration-300 ${
-                niveau.highlighted
-                  ? "border-[#1F8A4C] bg-[#1F8A4C] text-white shadow-2xl shadow-[#1F8A4C]/20 scale-105 z-10"
-                  : "border-gray-200 bg-white hover:border-[#1F8A4C] hover:shadow-lg"
+              className={`relative rounded-2xl p-8 transition-all duration-300 ${
+                niveau.highlighted ? "scale-105 z-10" : ""
               }`}
+              style={
+                niveau.highlighted
+                  ? {
+                      background: "linear-gradient(145deg, #003d1a, #00561e)",
+                      border: "1px solid rgba(0,230,118,0.4)",
+                      boxShadow: "0 0 40px rgba(0,230,118,0.15)",
+                    }
+                  : {
+                      background: "#0d1a0f",
+                      border: "1px solid rgba(0,230,118,0.10)",
+                    }
+              }
             >
               {niveau.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md">
@@ -82,17 +100,12 @@ export default function FormationPreview() {
                 </div>
               )}
 
-              <h3
-                className={`font-outfit font-bold text-lg mb-1 ${
-                  niveau.highlighted ? "text-white" : "text-[#111827]"
-                }`}
-              >
+              <h3 className="font-jakarta font-bold text-lg mb-1 text-white">
                 {niveau.name}
               </h3>
               <p
-                className={`font-outfit font-bold text-3xl mb-6 ${
-                  niveau.highlighted ? "text-white" : "text-[#1F8A4C]"
-                }`}
+                className="font-jakarta font-bold text-3xl mb-6"
+                style={{ color: "#00e676" }}
               >
                 {niveau.price}
               </p>
@@ -102,11 +115,10 @@ export default function FormationPreview() {
                   <li key={f} className="flex items-start gap-2 text-sm">
                     <Check
                       size={16}
-                      className={`mt-0.5 shrink-0 ${
-                        niveau.highlighted ? "text-white" : "text-[#1F8A4C]"
-                      }`}
+                      className="mt-0.5 shrink-0"
+                      style={{ color: "#00e676" }}
                     />
-                    <span className={niveau.highlighted ? "text-white/90" : "text-[#374151]"}>
+                    <span style={{ color: niveau.highlighted ? "rgba(255,255,255,0.9)" : "#8a9e8c" }}>
                       {f}
                     </span>
                   </li>
@@ -115,11 +127,19 @@ export default function FormationPreview() {
 
               <Link
                 href="/formation"
-                className={`block text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                className="block text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300"
+                style={
                   niveau.highlighted
-                    ? "bg-white text-[#1F8A4C] hover:bg-[#EBF5F0] hover:shadow-lg"
-                    : "bg-[#EBF5F0] text-[#1F8A4C] hover:bg-[#1F8A4C] hover:text-white"
-                }`}
+                    ? {
+                        background: "linear-gradient(135deg, #003d1a, #00e676)",
+                        color: "#000000",
+                      }
+                    : {
+                        border: "1px solid rgba(0,230,118,0.30)",
+                        color: "#00e676",
+                        background: "transparent",
+                      }
+                }
               >
                 Voir cette formation
               </Link>
@@ -130,7 +150,8 @@ export default function FormationPreview() {
         <div className="text-center">
           <Link
             href="/formation"
-            className="inline-flex items-center gap-2 text-[#1F8A4C] font-semibold hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 font-semibold hover:gap-3 transition-all"
+            style={{ color: "#00e676" }}
           >
             Voir tous les détails de la formation <ArrowRight size={18} />
           </Link>

@@ -35,7 +35,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
   }, [isInView, target])
 
   return (
-    <span ref={ref} className="font-outfit font-bold text-4xl sm:text-5xl text-[#1F8A4C]">
+    <span ref={ref} className="font-jakarta font-bold text-4xl sm:text-5xl" style={{ color: "#00e676" }}>
       {count}
       {suffix}
     </span>
@@ -44,7 +44,13 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 
 export default function StatsSection() {
   return (
-    <section className="py-20 bg-[#F8FAF9]">
+    <section
+      className="py-20"
+      style={{
+        background: "#0a110b",
+        borderTop: "1px solid rgba(0,230,118,0.12)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, i) => {
@@ -58,11 +64,14 @@ export default function StatsSection() {
                 viewport={{ once: true }}
                 className="text-center group"
               >
-                <div className="w-14 h-14 bg-[#EBF5F0] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#1F8A4C] transition-colors duration-300">
-                  <Icon size={24} className="text-[#1F8A4C] group-hover:text-white transition-colors duration-300" />
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-300"
+                  style={{ background: "rgba(0,230,118,0.08)" }}
+                >
+                  <Icon size={24} style={{ color: "#00e676" }} />
                 </div>
                 <Counter target={stat.value} suffix={stat.suffix} />
-                <p className="text-[#374151] mt-2 text-sm font-medium">{stat.label}</p>
+                <p className="mt-2 text-sm font-medium" style={{ color: "#8a9e8c" }}>{stat.label}</p>
               </motion.div>
             )
           })}

@@ -26,9 +26,15 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-3" : "bg-white/95 backdrop-blur-sm py-4"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? "rgba(6,10,7,0.95)" : "rgba(6,10,7,0.85)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(0,230,118,0.08)",
+        paddingTop: scrolled ? "12px" : "16px",
+        paddingBottom: scrolled ? "12px" : "16px",
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -39,8 +45,9 @@ export default function Header() {
               alt="Préo IA"
               width={120}
               height={50}
-              className="h-10 w-auto"
+              className="h-10 w-auto brightness-0 invert"
               priority
+              onError={() => {}}
             />
           </Link>
 
@@ -50,14 +57,21 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#374151] hover:text-[#1F8A4C] font-medium transition-colors text-sm"
+                className="font-medium transition-colors text-sm"
+                style={{ color: "rgba(255,255,255,0.7)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#00e676")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="bg-[#1F8A4C] hover:bg-[#166138] text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors"
+              className="px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg, #003d1a, #00e676)",
+                color: "#000000",
+              }}
             >
               Devis gratuit
             </Link>
@@ -65,7 +79,8 @@ export default function Header() {
 
           {/* Mobile burger */}
           <button
-            className="md:hidden p-2 text-[#374151]"
+            className="md:hidden p-2"
+            style={{ color: "rgba(255,255,255,0.8)" }}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu navigation"
           >
@@ -75,13 +90,22 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-100">
-            <nav className="flex flex-col gap-3 pt-4">
+          <div
+            className="md:hidden mt-4 pb-4 rounded-2xl"
+            style={{ borderTop: "1px solid rgba(0,230,118,0.10)" }}
+          >
+            <nav
+              className="flex flex-col gap-3 pt-4 px-2"
+              style={{ background: "#0a110b", borderRadius: "0 0 16px 16px" }}
+            >
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[#374151] hover:text-[#1F8A4C] font-medium py-2 transition-colors"
+                  className="font-medium py-2 px-3 rounded-lg transition-colors"
+                  style={{ color: "rgba(255,255,255,0.7)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#00e676")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
@@ -89,7 +113,11 @@ export default function Header() {
               ))}
               <Link
                 href="/contact"
-                className="bg-[#1F8A4C] hover:bg-[#166138] text-white px-5 py-3 rounded-lg font-semibold text-center transition-colors mt-2"
+                className="px-5 py-3 rounded-full font-semibold text-center transition-all mt-2 mb-2 mx-1"
+                style={{
+                  background: "linear-gradient(135deg, #003d1a, #00e676)",
+                  color: "#000000",
+                }}
                 onClick={() => setIsOpen(false)}
               >
                 Devis gratuit

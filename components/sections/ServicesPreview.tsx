@@ -1,41 +1,45 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Search, Zap, GraduationCap, Database, Wrench } from "lucide-react"
 
 const services = [
   {
-    image: "/images/audit-ia.jpg",
+    icon: Search,
+    emoji: "🔍",
     title: "Audit IA",
     description:
       "Analyse complète de votre entreprise, identification des meilleures opportunités IA et roadmap priorisée sur 6 mois.",
     href: "/services#audit",
   },
   {
-    image: "/images/integration-ia.jpg",
+    icon: Zap,
+    emoji: "⚡",
     title: "Intégration IA sur mesure",
     description:
       "Automatisation de vos workflows, chatbot WhatsApp, applications métier adaptées aux réalités africaines.",
     href: "/services#integration",
   },
   {
-    image: "/images/formation.jpg",
+    icon: GraduationCap,
+    emoji: "🎓",
     title: "Formation dirigeants",
     description:
       "Formation 100% en ligne pour comprendre, décider et piloter un projet IA sans être expert technique.",
     href: "/formation",
   },
   {
-    image: "/images/data-prep.jpg",
+    icon: Database,
+    emoji: "🗄️",
     title: "Préparation des données",
     description:
       "Structuration et mise en forme de vos données d'entreprise pour les rendre exploitables par l'IA.",
     href: "/services#donnees",
   },
   {
-    image: "/images/maintenance.jpg",
+    icon: Wrench,
+    emoji: "🔧",
     title: "Maintenance & Support",
     description:
       "Contrats mensuels de suivi, monitoring et support pour toutes les solutions IA déployées.",
@@ -45,7 +49,7 @@ const services = [
 
 export default function ServicesPreview() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ background: "#060a07" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -55,13 +59,16 @@ export default function ServicesPreview() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-[#1F8A4C] font-semibold text-sm uppercase tracking-wider">
+          <span
+            className="font-semibold text-sm uppercase tracking-wider"
+            style={{ color: "#00e676" }}
+          >
             Ce que nous faisons
           </span>
-          <h2 className="font-outfit text-3xl sm:text-4xl font-bold text-[#111827] mt-2 mb-4">
+          <h2 className="font-jakarta text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
             Nos 5 services
           </h2>
-          <p className="text-[#374151] max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto" style={{ color: "#8a9e8c" }}>
             De l&apos;audit initial au support continu, nous vous accompagnons à chaque étape
             de votre transformation par l&apos;IA.
           </p>
@@ -76,30 +83,43 @@ export default function ServicesPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
+              className="group rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2"
+              style={{
+                background: "#0d1a0f",
+                border: "1px solid rgba(0,230,118,0.10)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.border = "1px solid rgba(0,230,118,0.25)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.border = "1px solid rgba(0,230,118,0.10)"
+              }}
             >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              </div>
+              {/* Icon area — green gradient top strip */}
+              <div
+                className="h-2 w-full"
+                style={{ background: "linear-gradient(90deg, #003d1a, #00e676)" }}
+              />
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="font-outfit font-bold text-lg text-[#111827] mb-2 group-hover:text-[#1F8A4C] transition-colors">
+                {/* Icon circle */}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: "rgba(0,230,118,0.08)" }}
+                >
+                  <span className="text-xl">{service.emoji}</span>
+                </div>
+                <h3 className="font-jakarta font-bold text-lg text-white mb-2 transition-colors group-hover:opacity-90">
                   {service.title}
                 </h3>
-                <p className="text-[#374151] text-sm leading-relaxed mb-4">
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "#8a9e8c" }}>
                   {service.description}
                 </p>
                 <Link
                   href={service.href}
-                  className="inline-flex items-center gap-1 text-[#1F8A4C] font-semibold text-sm hover:gap-2 transition-all"
+                  className="inline-flex items-center gap-1 font-semibold text-sm hover:gap-2 transition-all"
+                  style={{ color: "#00e676" }}
                 >
                   En savoir plus <ArrowRight size={14} />
                 </Link>
@@ -113,20 +133,28 @@ export default function ServicesPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#1F8A4C] to-[#166138] rounded-2xl p-8 flex flex-col justify-center items-start shadow-xl"
+            className="rounded-2xl p-8 flex flex-col justify-center items-start"
+            style={{
+              background: "linear-gradient(135deg, #003d1a, #005a28)",
+              border: "1px solid rgba(0,230,118,0.3)",
+            }}
           >
-            <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+            <div
+              className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+              style={{ background: "rgba(255,255,255,0.10)" }}
+            >
               <span className="text-2xl">💡</span>
             </div>
-            <h3 className="font-outfit font-bold text-xl text-white mb-3">
+            <h3 className="font-jakarta font-bold text-xl text-white mb-3">
               Pas sûr de quel service vous avez besoin ?
             </h3>
-            <p className="text-white/80 text-sm mb-8 leading-relaxed">
+            <p className="text-sm mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
               Discutons ensemble de vos enjeux. Le premier échange est gratuit et sans engagement.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-[#1F8A4C] px-6 py-3 rounded-xl font-semibold text-sm hover:bg-[#EBF5F0] transition-colors hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 hover:shadow-lg"
+              style={{ background: "#00e676", color: "#000000" }}
             >
               Devis gratuit <ArrowRight size={14} />
             </Link>

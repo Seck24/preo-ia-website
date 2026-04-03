@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, Outfit } from "next/font/google"
+import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
@@ -11,9 +11,9 @@ const inter = Inter({
   display: "swap",
 })
 
-const outfit = Outfit({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-jakarta",
   display: "swap",
 })
 
@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${outfit.variable}`}>
-      <body className="font-inter text-gray-body bg-white antialiased">
+    <html lang="fr" className={`${jakarta.variable} ${inter.variable}`}>
+      <body className="font-inter antialiased bg-preo-bg text-white">
         <Header />
         <main>{children}</main>
         <Footer />
